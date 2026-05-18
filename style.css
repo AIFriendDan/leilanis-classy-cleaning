@@ -552,6 +552,112 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes floatUp {
+  0%   { transform: translateY(0) scale(1); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-100vh) scale(1.4); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
+  50%       { opacity: 0.8; transform: scale(1.3) rotate(180deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 0.9; transform: scale(1.15); }
+}
+
+@keyframes drift {
+  0%   { transform: translateX(0) translateY(0) rotate(0deg); }
+  33%  { transform: translateX(18px) translateY(-12px) rotate(120deg); }
+  66%  { transform: translateX(-12px) translateY(8px) rotate(240deg); }
+  100% { transform: translateX(0) translateY(0) rotate(360deg); }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Particle canvas layer */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-particles span {
+  position: absolute;
+  bottom: -20px;
+  display: block;
+  border-radius: 50%;
+  animation: floatUp linear infinite;
+}
+
+/* Gold sparkle dots */
+.hero-particles span:nth-child(1)  { left: 5%;  width: 4px;  height: 4px;  background: var(--gold);    animation-duration: 8s;  animation-delay: 0s;   opacity: 0.7; }
+.hero-particles span:nth-child(2)  { left: 12%; width: 6px;  height: 6px;  background: var(--gold-light); animation-duration: 11s; animation-delay: 1.5s; opacity: 0.5; }
+.hero-particles span:nth-child(3)  { left: 22%; width: 3px;  height: 3px;  background: var(--gold);    animation-duration: 7s;  animation-delay: 3s;   opacity: 0.8; }
+.hero-particles span:nth-child(4)  { left: 32%; width: 5px;  height: 5px;  background: rgba(201,168,76,0.6); animation-duration: 13s; animation-delay: 0.5s; }
+.hero-particles span:nth-child(5)  { left: 42%; width: 4px;  height: 4px;  background: var(--gold);    animation-duration: 9s;  animation-delay: 2s;   opacity: 0.6; }
+.hero-particles span:nth-child(6)  { left: 55%; width: 7px;  height: 7px;  background: var(--gold-light); animation-duration: 14s; animation-delay: 4s;   opacity: 0.4; }
+.hero-particles span:nth-child(7)  { left: 63%; width: 3px;  height: 3px;  background: var(--gold);    animation-duration: 6s;  animation-delay: 1s;   opacity: 0.9; }
+.hero-particles span:nth-child(8)  { left: 72%; width: 5px;  height: 5px;  background: rgba(201,168,76,0.5); animation-duration: 10s; animation-delay: 3.5s; }
+.hero-particles span:nth-child(9)  { left: 82%; width: 4px;  height: 4px;  background: var(--gold);    animation-duration: 8s;  animation-delay: 0.8s; opacity: 0.7; }
+.hero-particles span:nth-child(10) { left: 91%; width: 6px;  height: 6px;  background: var(--gold-light); animation-duration: 12s; animation-delay: 2.5s; opacity: 0.5; }
+.hero-particles span:nth-child(11) { left: 18%; width: 3px;  height: 3px;  background: var(--gold);    animation-duration: 9s;  animation-delay: 5s;   opacity: 0.6; }
+.hero-particles span:nth-child(12) { left: 48%; width: 4px;  height: 4px;  background: rgba(201,168,76,0.7); animation-duration: 11s; animation-delay: 6s; }
+.hero-particles span:nth-child(13) { left: 78%; width: 3px;  height: 3px;  background: var(--gold);    animation-duration: 7s;  animation-delay: 4.5s; opacity: 0.8; }
+.hero-particles span:nth-child(14) { left: 35%; width: 5px;  height: 5px;  background: var(--gold-light); animation-duration: 15s; animation-delay: 7s;   opacity: 0.4; }
+.hero-particles span:nth-child(15) { left: 88%; width: 3px;  height: 3px;  background: var(--gold);    animation-duration: 8s;  animation-delay: 1.2s; opacity: 0.7; }
+
+/* Drifting glows */
+.hero-glow-1 {
+  position: absolute;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
+  top: 20%; left: 10%;
+  z-index: 1;
+  animation: drift 18s ease-in-out infinite;
+  pointer-events: none;
+}
+.hero-glow-2 {
+  position: absolute;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139,26,58,0.25) 0%, transparent 70%);
+  bottom: 30%; right: 15%;
+  z-index: 1;
+  animation: drift 22s ease-in-out infinite reverse;
+  pointer-events: none;
+}
+.hero-glow-3 {
+  position: absolute;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  top: 60%; left: 50%;
+  z-index: 1;
+  animation: drift 14s ease-in-out infinite 3s;
+  pointer-events: none;
+}
+
+/* Animated gradient bg */
+.hero-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 100% 100%, rgba(139,26,58,0.4) 0%, transparent 60%),
+    linear-gradient(160deg, #3D0818, #5C0F26, #8B1A3A, #5C0F26, #3D0818) !important;
+  background-size: 400% 400% !important;
+  animation: gradientShift 12s ease infinite !important;
+}
+
 /* ---- MOBILE ---- */
 @media (max-width: 640px) {
   .form-row { grid-template-columns: 1fr; }
