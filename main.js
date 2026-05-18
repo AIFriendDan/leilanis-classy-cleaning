@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---- FORMSPREE ENDPOINT ----
   // Replace YOUR_FORM_ID with the actual Formspree form ID
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xredbepv';
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
