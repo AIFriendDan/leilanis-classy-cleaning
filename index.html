@@ -183,6 +183,22 @@
           </div>
         </div>
         <div class="form-group full">
+          <label id="timeSlotLabel">Preferred Time Slot</label>
+          <div class="time-slots" role="radiogroup" aria-labelledby="timeSlotLabel">
+            <input type="radio" name="timeSlot" id="slot-8-10" value="8:00 AM – 10:00 AM" required />
+            <label for="slot-8-10" class="time-slot-btn">8 – 10 AM</label>
+
+            <input type="radio" name="timeSlot" id="slot-10-12" value="10:00 AM – 12:00 PM" required />
+            <label for="slot-10-12" class="time-slot-btn">10 AM – 12 PM</label>
+
+            <input type="radio" name="timeSlot" id="slot-12-2" value="12:00 PM – 2:00 PM" required />
+            <label for="slot-12-2" class="time-slot-btn">12 – 2 PM</label>
+
+            <input type="radio" name="timeSlot" id="slot-2-4" value="2:00 PM – 4:00 PM" required />
+            <label for="slot-2-4" class="time-slot-btn">2 – 4 PM</label>
+          </div>
+        </div>
+        <div class="form-group full">
           <label for="service">Service Requested</label>
           <select id="service" name="service" required>
             <option value="" disabled selected>Select a package...</option>
