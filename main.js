@@ -1,6 +1,6 @@
 // ============================================
 // LEILANI'S CLASSY CLEANING — MAIN JS
-// Form submission via Formspree → Twilio SMS
+// Form submission via Formspree → Resend email notification
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -38,6 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
         btnText.textContent = 'Request Sent ✦';
         submitBtn.style.background = '#5C0F26';
         submitBtn.style.color = '#C9A84C';
+
+        // Best-effort booking notification email to Leilani. Fire-and-forget —
+        // failure here (e.g. Resend misconfigured) must never affect the
+        // booking success state above; Formspree is the source of truth.
+        fetch('/api/notify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        }).catch(err => console.error('Booking notify failed (non-blocking):', err));
       } else {
         throw new Error('Form submission failed');
       }
